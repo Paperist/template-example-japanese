@@ -3,6 +3,7 @@ plugins:
   - "@paperist/remark-latex"
 settings:
   latex:
+    templatesDir: .paperist/ejs
     imageConfigs:
       width: 0.9\linewidth
       height: 0.25\paperheight
@@ -16,6 +17,11 @@ settings:
         - onecolumn
         - openany
       fontpreset: ipaex
-      title: テスト文章
-      author: 山田 太郎
-      date: 2016年 6月
+      title:
+        ja: テスト文章
+      date:
+        year: 2017
+        month: 6
+      authors:
+        - name:
+            en: 山田 太郎

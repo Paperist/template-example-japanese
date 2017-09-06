@@ -1,19 +1,25 @@
 \documentclass[dvipdfmx,<%= documentoptions.join(',') %>]{<%= documentclass %>}
-\usepackage{graphicx}
-\usepackage{listings}
-\usepackage{cite}
-\makeatletter
-\def\NAT@parse{\typeout{This is a fake Natbib command to fool Hyperref.}}
-\makeatother
+  \usepackage{graphicx}
+  \usepackage{listings}
+  \usepackage{datetime}
 
-%% Font Config
-\usepackage[deluxe]{otf}
-\usepackage[noalphabet,<%= fontpreset %>]{pxchfon}
-\usepackage[prefernoncjk]{pxcjkcat}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{fix-cm}
+  %% Font Config
+  \usepackage[deluxe]{otf}
+  \usepackage[noalphabet,<%= fontpreset %>]{pxchfon}
+  \usepackage[prefernoncjk]{pxcjkcat}
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{textcomp}
+  \usepackage{lmodern}
+  \usepackage{fix-cm}
+  \cjkcategory{sym18}{cjk}
+  \cjkcategory{sym19}{cjk}
+
+  %% Cites
+  \usepackage{cite}
+  \makeatletter
+  \def\NAT@parse{\typeout{}}
+  \makeatother
 
 %% Margin Config
 \usepackage[dvipdfm,top=10zw,bottom=12zw,left=10zw,right=10zw]{geometry}
@@ -48,10 +54,14 @@
 \renewcommand{\footrulewidth}{0pt}}
 \renewcommand{\sfdefault}{phv}
 
+%% Set date
+\year<%= date.year %> \relax
+\month<%= date.month %> \relax
+
 %% Document Config
-\title{<%= title %>}
-\author{<%= author %>}
-\date{<%= date %>}
+\title{<%= title.ja %>}
+\author{<%= authors.map((author) => author.ja).join(' \\and ') %>}
+\date{{\the\year}年~{\the\month}月}
 
 \begin{document}
 
